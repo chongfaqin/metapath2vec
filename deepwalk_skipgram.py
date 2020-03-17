@@ -14,8 +14,8 @@ with open("result/user_add_goods.txt","r",encoding="utf-8") as file:
 print("corups size:",len(sentences))
 
 model = gensim.models.word2vec.Word2Vec(sentences=sentences,sg=1,workers=multiprocessing.cpu_count())
-model = gensim.models.word2vec.Word2Vec.load("models/model.deepwalk")  # 加载旧模型
-model.build_vocab(sentences, update=True)  # 更新词汇表
+model = gensim.models.word2vec.Word2Vec.load("models/model.deepwalk")
+model.build_vocab(sentences, update=True) 
 model.train(sentences=sentences,total_examples=model.corpus_count,epochs=30)
 model.save("models/model.deepwalk")
 
